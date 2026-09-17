@@ -1,0 +1,107 @@
+/* The Meeting Room — outer sister. Zero dependencies. Gold on black. */
+:root{
+  --bg:#0b0b0d; --panel:#141417; --panel2:#1b1b1f;
+  --gold:#d4a437; --gold-dim:#8a6d24;
+  --ink:#e8e4d8; --dim:#9a958a; --line:#2a2a2e;
+  --red:#c0392b; --green:#3fa34d;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif; line-height:1.5;
+  padding:1rem;
+}
+a{color:var(--gold)}
+.dim{color:var(--dim); font-size:.85em}
+.right{margin-left:auto}
+
+.window{
+  max-width:1200px; margin:0 auto;
+  border:1px solid var(--gold-dim); border-radius:6px;
+  background:var(--panel);
+}
+.titlebar{
+  display:flex; justify-content:space-between; align-items:center;
+  background:#000; border-bottom:1px solid var(--gold-dim);
+  padding:.5rem .9rem; border-radius:6px 6px 0 0;
+}
+.win-title{color:var(--gold); letter-spacing:.12em; font-size:.9rem}
+.win-controls{color:var(--dim); letter-spacing:.4em}
+
+.statusbar{
+  display:flex; gap:1rem; align-items:center;
+  padding:.45rem .9rem; border-bottom:1px solid var(--line);
+  font-family:-apple-system,'Segoe UI',sans-serif; font-size:.8rem;
+}
+.pill{padding:.15rem .6rem; border-radius:999px; font-size:.75rem; letter-spacing:.06em}
+.pill.live{background:#12341a; color:#7fd68a; border:1px solid var(--green)}
+.pill.offline{background:#3a1414; color:#e08a8a; border:1px solid var(--red)}
+
+section{padding:.9rem}
+h2{
+  color:var(--gold); font-size:1rem; letter-spacing:.1em;
+  border-bottom:1px solid var(--line); padding-bottom:.35rem; margin:.2rem 0 .7rem;
+}
+.context-pane ul{margin:.4rem 0; padding-left:1.2rem}
+.context-pane li{margin:.25rem 0; font-size:.95rem}
+
+.board{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:.7rem; padding:.9rem;
+}
+.column{background:var(--panel2); border:1px solid var(--line); border-radius:4px; padding:.6rem}
+.column h2{font-size:.85rem; display:flex; justify-content:space-between; align-items:center}
+.count{background:var(--gold-dim); color:#000; border-radius:999px; padding:0 .55rem; font-size:.75rem}
+.col-note{font-size:.8rem; color:var(--dim); margin:-.4rem 0 .5rem}
+.cards{display:flex; flex-direction:column; gap:.6rem; min-height:60px}
+
+.card{
+  background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--dim);
+  border-radius:3px; padding:.6rem .7rem; font-size:.9rem;
+}
+.card .subject{font-weight:bold; margin:0 0 .25rem}
+.card .meta{font-family:-apple-system,'Segoe UI',sans-serif; font-size:.72rem; color:var(--dim); margin-bottom:.35rem}
+.card .body{white-space:pre-wrap; margin:.3rem 0}
+.card .ev{font-size:.78rem; margin-top:.35rem}
+.evidence-yes{color:#7fd68a}
+.evidence-no{color:var(--dim)}
+.card.anomaly{border-left-color:var(--red); box-shadow:0 0 0 1px var(--red)}
+.card .anomaly-tag{color:var(--red); font-size:.72rem; letter-spacing:.1em}
+.card .actions{margin-top:.5rem; display:flex; flex-wrap:wrap; gap:.35rem}
+.card button{
+  background:transparent; border:1px solid var(--gold-dim); color:var(--gold);
+  border-radius:3px; padding:.2rem .55rem; font-size:.75rem; cursor:pointer;
+  font-family:-apple-system,'Segoe UI',sans-serif;
+}
+.card button:hover{background:var(--gold-dim); color:#000}
+.card .replies{margin-top:.5rem; border-top:1px dashed var(--line); padding-top:.4rem}
+.card .reply{font-size:.82rem; margin:.3rem 0; padding-left:.5rem; border-left:2px solid var(--line)}
+.card .statuslog{font-family:-apple-system,'Segoe UI',sans-serif; font-size:.7rem; color:var(--dim); margin-top:.4rem}
+.card .statuslog li{margin:.1rem 0}
+.writeback{font-size:.78rem; margin-top:.35rem; padding:.3rem .5rem; border-radius:3px}
+.writeback.pending{background:#3a2c10; color:#e0b45a}
+.writeback.confirmed{background:#12341a; color:#7fd68a}
+
+.compose{border-top:1px solid var(--line)}
+.compose form{display:flex; flex-direction:column; gap:.6rem}
+.form-row{display:flex; gap:.6rem; flex-wrap:wrap}
+.form-row label{display:flex; flex-direction:column; gap:.2rem; font-size:.82rem; color:var(--dim)}
+.form-row label.grow{flex:1; min-width:200px}
+.compose label{display:flex; flex-direction:column; gap:.2rem; font-size:.82rem; color:var(--dim)}
+.compose input,.compose select,.compose textarea{
+  background:#0e0e10; border:1px solid var(--line); color:var(--ink);
+  border-radius:3px; padding:.45rem .6rem; font-size:.9rem; font-family:inherit;
+}
+.compose input:focus,.compose select:focus,.compose textarea:focus{outline:none; border-color:var(--gold)}
+.compose button{
+  align-self:flex-start; background:var(--gold); color:#000; border:none;
+  border-radius:3px; padding:.55rem 1.2rem; font-size:.9rem; cursor:pointer;
+  font-family:-apple-system,'Segoe UI',sans-serif; letter-spacing:.04em;
+}
+.compose button:hover{background:#e8bc4a}
+.compose button:disabled{opacity:.5; cursor:wait}
+
+.foot{border-top:1px solid var(--line); padding:.9rem; font-size:.85rem}
+.foot p{margin:.3rem 0}
+
+@media (max-width:640px){ .board{grid-template-columns:1fr} }
